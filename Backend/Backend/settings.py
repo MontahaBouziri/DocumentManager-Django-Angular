@@ -23,7 +23,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--@a#q)+=8d(#1h*wu^z)92(d56nzhua@h+@i7-19$*@_hi(%i3'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -127,12 +127,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cdc3',
         'USER':'postgres',
-        'PASSWORD':'ilcpadl10',
+
         'HOST': 'localhost',
         'PORT':'5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
