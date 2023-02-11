@@ -1,0 +1,139 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
+<form  [formGroup]="formExample" (ngSubmit)="addOneService()"> 
+    
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+
+                                <tr>
+                                <th><span>Service</span> <br> <input type="text" name="" id="" formControlName="nom_service">
+                                    <div *ngIf="
+                                        formExample.controls['nom_service'].errors?.['pattern'] && 
+                                        formExample.controls['nom_service'].invalid " class="text-danger">
+                                        nom_service est invalide* </div>
+
+                                    <div *ngIf="formExample.controls['nom_service'].errors?.['required'] && 
+                                        formExample.controls['nom_service'].touched 
+                                       " class="text-danger">
+                                       Nom service est obligatoire*</div>
+                                </th>
+
+                                <th ><span>numero de service</span> <br><input type="text" name="" id="" formControlName="num_serv">
+                                    <div *ngIf="
+                                    formExample.controls['num_serv'].errors?.['pattern'] && 
+                                    formExample.controls['num_serv'].invalid " class="text-danger">
+                                    numero de service est invalide*
+                                    </div>
+                                    <div *ngIf="formExample.controls['num_serv'].errors?.['required'] && 
+                                    formExample.controls['num_serv'].touched 
+                                    " class="text-danger">
+                                    numero de service est obligatoire*
+                                    </div>
+                                </th>
+
+                                <th><span>nombre d'employers</span>  <br><input type="text" name="" id="" maxlength="10" size="17" formControlName="nbre_emp">
+                                    <div *ngIf="
+                                    formExample.controls['nbre_emp'].errors?.['pattern'] && 
+                                    formExample.controls['nbre_emp'].invalid " class="text-danger">
+                                    nombre d'employers est invalide*
+                                    </div>
+                                    <div *ngIf="formExample.controls['nbre_emp'].errors?.['required'] && 
+                                    formExample.controls['nbre_emp'].touched 
+                                    " class="text-danger">
+                                    nombre d'employers est obligatoire*
+                                    </div>
+                                </th>
+
+                                <th><span>type</span>   <br><input type="text" name="" id="" formControlName="type">
+                                    <div *ngIf="
+                                    formExample.controls['type'].errors?.['pattern'] && 
+                                    formExample.controls['type'].invalid " class="text-danger">
+                                    type est invalide* </div>
+
+                                <div *ngIf="formExample.controls['type'].errors?.['required'] && 
+                                    formExample.controls['type'].touched 
+                                   " class="text-danger">
+                                   type est obligatoire*</div>
+                                 </th>
+                                
+                                <th><button  type="submit" class="submit action-button" >Ajout+</button></th>
+                                <th>&nbsp;</th>
+                                </tr>
+
+                            
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let service of ServicesArray" >
+                                    <td>
+                                        <img src="assets/serviceicon.png" alt="" >
+                                        <a  class="user-link" (click)="DetailService(service)" >{{service.nom_service}} </a>
+                                        <span class="user-subhead">ID service: {{service.id}}</span>
+                                    </td>
+
+
+                                    <td> {{service.num_serv}} </td>
+
+
+                                    <td >
+                                        <span class="label label-default"> {{service.nbre_emp}} </span>
+                                    </td>
+
+
+                                    <td>
+                                        {{service.type}}
+                                    </td>
+
+
+
+
+
+
+
+
+
+
+
+                                    <td style="width: 20%;">
+                                        <a href="#" class="table-link text-warning">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                        <a class="table-link text-info"  type="submit" (click)="DetailService(service)">
+                                            
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                           
+                                        </a>
+
+                                        <a class="table-link danger" type="reset" (click)="deleteOneService(service.id)">
+                                            
+                                            <span class="fa-stack" >
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            <!--<button type="reset" (click)="deleteOneService(service.id)"></button> -->
+                                        </a>
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>

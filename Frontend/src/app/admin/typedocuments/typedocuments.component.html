@@ -1,0 +1,107 @@
+<form [formGroup]="formExample" (ngSubmit)="postTypeDoc()"   >
+
+<div class="container-fluid">
+    <div class="container">
+      <div class="row">
+ 
+
+
+        <div class="new ">
+            
+            <div class="label"> <span  class="label"> Ajouter un type de compte :</span> </div> 
+
+            <div>
+              
+             <label class="label" for="NomTypeDoc">Nom du compte      </label>           &nbsp;   
+             <input type="text" formControlName="NomTypeDoc" name="NomTypeDoc" id="NomTypeDoc"  >  
+
+             <div *ngIf="
+                         formExample.controls['NomTypeDoc'].errors?.['pattern'] && 
+                         formExample.controls['NomTypeDoc'].invalid " class="text-danger">
+              Nom Type Document ne doit pas avoir des caractère spéciaux ou chiffre*
+          </div>
+               <div *ngIf="formExample.controls['NomTypeDoc'].errors?.['required'] && 
+                         formExample.controls['NomTypeDoc'].touched 
+                         " class="text-danger">
+              Nom Type Document est obligatoire*
+          </div>
+
+              <!-- <div *ngIf="formExample.controls['NomTypeDoc'].errors?.['required'] && 
+                         formExample.controls['NomTypeDoc'].touched && 
+                         formExample.controls['NomTypeDoc'].errors?.['pattern'] && 
+                         formExample.controls['NomTypeDoc'].invalid " class="text-danger">
+              Nom Type Document est obligatoire*
+          </div>   -->
+
+             
+             <br>
+
+             <label class="label" for="text">nombre de pièces</label>
+             <input type="text" formControlName="Nbr_pieces" name="Nbr_pieces" id=""  required   >
+
+             <div *ngIf="
+                         formExample.controls['Nbr_pieces'].errors?.['pattern'] && 
+                         formExample.controls['Nbr_pieces'].invalid " class="text-danger">
+                         Nbr_pieces est invalide*
+              </div>
+              <div *ngIf="formExample.controls['Nbr_pieces'].errors?.['required'] && 
+                         formExample.controls['Nbr_pieces'].touched 
+                         " class="text-danger">
+                         Nbr_pieces est obligatoire*
+              </div>
+
+             <!--
+             <div *ngIf="formExample.controls['Nbr_pieces'].errors?.['required']" class="text-danger">
+              nombre de pièces est obligatoire*
+          </div>
+          <div *ngIf="formExample.controls['Nbr_pieces'].invalid && 
+                      formExample.controls['Nbr_pieces'].dirty || 
+                      formExample.controls['Nbr_pieces'].touched" class="text-danger">
+            nombre de pièces est vide
+        </div>  -->
+             
+
+             <button class="bouton" type="submit" (click)="save()" class="submit action-button" [disabled]="!formExample.valid" >Ajouter</button>
+
+            
+
+            </div>
+        </div>
+
+
+
+
+<!--   <sup>Pièces</sup>-->
+
+        <div class="col-sm-4" *ngFor="let type of typesArr" >
+          <div class="card text-center" >
+            <div class="title">
+              <!--<i class="fa fa-paper-plane" aria-hidden="true"></i>-->
+              <h2 (click)="typeClicked(type)" (click)="onSelect(type)" > {{ type.Nom_type }}</h2>
+            </div>
+            <div class="price">
+              <h1>{{ type.nbre_pieces }} Pièces</h1>
+            </div>
+            <div class="option">
+              <ul>
+              <li> <i class="fa fa-check" aria-hidden="true"></i> Id: {{type.id}} </li>
+              <li> <i class="fa fa-check" aria-hidden="true"></i>{{ type.Nom_type }}</li>
+              </ul>
+            </div>
+            <a href=""><button type="reset" (click)="deleteOneTypeDoc(type.id)">delete</button> </a>
+             
+          </div>
+        </div>
+        <!-- END Col one -->
+
+
+
+
+
+
+        
+      </div>
+    </div>
+  </div>
+
+</form>

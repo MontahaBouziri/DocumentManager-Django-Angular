@@ -1,0 +1,42 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.bigcontainer{
+  background-color: white;
+  height: 900px;
+  width: 1250px;
+  left:250px;
+  top: 150px;
+  position: relative;
+  
+}
+
+
+.container{
+  left :500px;
+  position: fixed;
+  background-color: black;
+}
+
+img{
+ float: left;
+ width:240px;
+ height: 150px;
+ left: 0px;
+ position: fixed;
+ z-index: 200;
+ box-shadow: 5px 5px 5px rgb(224, 222, 222);
+}
+
+app-sidebar{
+  position: fixed;
+  top: 150px;
+  z-index: 200;
+  
+
+}
+
+app-bars{
+  position: relative;
+  top: 0px;
+  
+}

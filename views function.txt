@@ -1,0 +1,71 @@
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt,requires_csrf_token
+from rest_framework.parsers import JSONParser
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework import viewsets
+from django.http.response import JsonResponse
+
+from .models import Document, TypeDocument
+#from Backend.Cdc_Documents.models import Document,TypeDocument
+from .serializers import DocumentSerializer, TypeDocumentSerializer
+from rest_framework.permissions import IsAuthenticated
+
+
+# Create your views here.def getUsers(request): 
+
+@csrf_exempt
+@api_view(['GET','POST','PUT','DELETE'])
+def TypeDocumentView(request, *args, **kwargs):
+    serializer_class= TypeDocumentSerializer
+    if request.method=='GET':
+        types_doc = TypeDocument.objects.all()
+        types_doc_ser = TypeDocumentSerializer(types_doc, many=True)
+        return Response(types_doc_ser.data)
+    if (request.method=='POST') :
+            types_doc_data = JSONParser().parse(request)
+            types_doc_ser = TypeDocumentSerializer(data=types_doc_data)
+            if types_doc_ser.is_valid():
+                types_doc_ser.save()
+                return Response("added succesfully")
+            return Response("add failed")
+    if (request.method=='PUT') :
+            types_doc_data = JSONParser().parse(request)
+            types_doc = TypeDocument.objects.get(id = types_doc_data['id'])
+            types_doc_ser = TypeDocumentSerializer(types_doc,data=types_doc_data)
+            if types_doc_ser.is_valid():
+                types_doc_ser.save()
+                return Response("Updated succesfully")
+            return Response("Updated failed")
+    if (request.method=='DELETE') : 
+            types_doc = TypeDocument.objects.get(Clé_type=id ) 
+            types_doc.delete()
+            return Response("Deleted successfully")
+
+
+@csrf_exempt
+@api_view(['GET','POST','PUT','DELETE'])
+def DocumentView(request,id, *args, **kwargs):
+    if request.method=='GET':
+        doc = Document.objects.all()
+        doc_ser = DocumentSerializer(doc, many=True)
+        return Response(doc_ser.data)
+    if (request.method=='POST') :
+        doc_data = JSONParser().parse(request)
+        doc_ser = DocumentSerializer(data=doc_data)
+        if doc_ser.is_valid():
+            doc_ser.save()
+            return Response("added succesfully")
+        return Response("add failed")
+    if (request.method=='PUT') :
+        doc_data = JSONParser().parse(request)
+        doc = Document.objects.get(id = doc_data['id'])
+        doc_ser = DocumentSerializer(doc,data=doc_data)
+        if doc_ser.is_valid():
+            doc_ser.save()
+            return Response("Updated succesfully")
+        return Response("Updated failed")
+    if (request.method=='DELETE') : 
+        doc = Document.objects.get(Clé_type=id ) 
+        doc.delete()
+        return Response("Deleted successfully")

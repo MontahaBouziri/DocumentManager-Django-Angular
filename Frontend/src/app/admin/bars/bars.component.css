@@ -1,0 +1,113 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
+.navdiv{
+  left: 560px;
+  height: 0px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  
+}
+.Firstnavbar{ 
+  margin-left: -320px;
+  position: relative;
+  
+}
+.barRecherche{
+  text-align: left;
+  margin-left: 10%;
+  margin-right: auto;
+  margin-top: 0px;
+  height: 70px;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+
+}
+
+.new{
+  
+  height: 90px;
+  width: 8%;
+  margin-left: -270px;
+  
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  
+  box-shadow: 5px 5px 5px 5px rgb(234, 234, 234);
+  box-shadow: 5px 5px 5px rgb(224, 222, 222);
+  --box-shadow: 5px 5px 5px 5px rgb(216, 216, 216);
+}
+
+li {
+  float: left;
+}
+
+li button {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #111;
+}
+li button:hover {
+  background-color: rgb(225, 225, 225);
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #111;
+}
+li a:hover {
+  background-color: rgb(225, 225, 225);
+}
+
+
+
+/* Change the link color to #111 (black) on hover */
+
+
+#deconnexion { 
+  margin-left: 53%;
+
+}
+
+#username{
+  margin-left: 0%;
+}
+
+
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: absolute;
+  top: 90px;
+}
+
+
+
+ 

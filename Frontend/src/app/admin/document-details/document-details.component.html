@@ -1,0 +1,188 @@
+<!-- multistep form -->
+<form id="msform"  action="" [formGroup]="formExample" (ngSubmit)="updateOneDoc()" >
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Document Details</li>
+    </ul>
+    <!-- fieldsets -->
+  
+    <fieldset class="fieldset1">
+      <h2 class="fs-title"><span> Les Détails Document  </span>    </h2>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant : </label>
+      <input type="text" name="" id="" value="{{document.id}}" >
+  
+
+
+
+
+      <label for="name">Référance dossier :</label>
+      <input type="text" name="" id="" value="{{document.ref}}" formControlName="ref">
+      <div *ngIf="
+                                            formExample.controls['ref'].errors?.['pattern'] && 
+                                            formExample.controls['ref'].invalid " class="text-danger">
+                                            référance est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['ref'].errors?.['required'] && 
+                                            formExample.controls['ref'].touched 
+                                           " class="text-danger">
+                                           référance est obligatoire*</div>
+
+
+
+
+
+
+
+  
+      <label for="name">Etat d'archive :</label>
+      <input type="text" name="" id="" value="{{document.Etat_archive}}" formControlName="Etat_archive">
+      <div *ngIf="
+                                            formExample.controls['Etat_archive'].errors?.['pattern'] && 
+                                            formExample.controls['Etat_archive'].invalid " class="text-danger">
+                                            Etat d'archive est invalide* </div>
+    
+                                        <div *ngIf="formExample.controls['Etat_archive'].errors?.['required'] && 
+                                            formExample.controls['Etat_archive'].touched 
+                                           " class="text-danger">
+                                           Etat d'archive est obligatoire*</div>
+
+
+
+  
+      <label for="name">Nombre de boites :</label>
+      <input type="text" name="" id="" value="{{document.nbr_boites}}" formControlName="nbr_boites">
+      <div *ngIf="
+                                            formExample.controls['nbr_boites'].errors?.['pattern'] && 
+                                            formExample.controls['nbr_boites'].invalid " class="text-danger">
+                                            nombre de boites est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['nbr_boites'].errors?.['required'] && 
+                                            formExample.controls['nbr_boites'].touched 
+                                           " class="text-danger">
+                                           nombre de boites est obligatoire*</div>
+
+
+
+  
+      <label for="name">Type de copie :</label>
+      <input type="text" name="" id="" value="{{document.type_copie}}" formControlName="type_copie">
+      <div *ngIf="
+                                            formExample.controls['type_copie'].errors?.['pattern'] && 
+                                            formExample.controls['type_copie'].invalid " class="text-danger">
+                                            type de copie est invalide* </div>
+    
+                                        <div *ngIf="formExample.controls['type_copie'].errors?.['required'] && 
+                                            formExample.controls['type_copie'].touched 
+                                           " class="text-danger">
+                                           typede copie est obligatoire*</div>
+
+  
+      <label for="name">Numero de contact :</label>
+      <input type="text" name="" id="" value="{{document.num_contact}}" formControlName="num_contact">
+      <div *ngIf="
+                                            formExample.controls['num_contact'].errors?.['pattern'] && 
+                                            formExample.controls['num_contact'].invalid " class="text-danger">
+                                            numero de contact est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['num_contact'].errors?.['required'] && 
+                                            formExample.controls['num_contact'].touched 
+                                           " class="text-danger">
+                                           numero de contact est obligatoire*</div>
+                                           
+  
+      <label for="name">Commentaire :</label>
+      <textarea type="text" name="address"  value="{{document.commentaire}}" formControlName="commentaire"></textarea>
+  
+      <br><br>
+      <label for="name">Type de compte: </label> &nbsp;&nbsp;
+      <select  name="comptes" id="compte-select" formControlName="id_type" >
+                              
+        <option *ngFor="let type of typesArr"  value="{{ type.id }}"> {{ type.Nom_type }} </option>
+        
+      </select> 
+     <br><br>
+
+      <label for="name">Service: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select  name="service" id="compte-select" formControlName="id_serv">
+        
+        <option *ngFor="let serv of serv_arr"  value="{{ serv.id }}"> {{ serv.nom_service }} </option>
+        
+      </select> 
+  
+      <br>
+
+      <label for="name">Organisme: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select  name="administration" id="compte-select" formControlName="id_admin">
+        
+        <option *ngFor="let admin of admin_arr"  value="{{ admin.id }}"> {{ admin.nom_admin }} </option>
+        
+      </select> 
+
+      &nbsp;&nbsp;
+      <button type="submit" name="submit" class="submit action-button" value="Submit" >Save</button>
+  
+  
+    </fieldset>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <fieldset class="fieldset2">
+      <h4 class="fs-title">   <span> Les Détails Document </span>     </h4>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant : </label>
+      <div>{{document.id}}</div>
+  
+      <label for="name">Référance dossier :</label>
+      <div>{{document.ref}}</div>
+  
+      <label for="name">Etat d'archive :</label>
+      <div>{{document.Etat_archive}}</div>
+  
+      <label for="name">Nombre de boites :</label>
+      <div>{{document.nbr_boites}}</div>
+  
+      <label for="name">Type de copie :</label>
+      <div>{{document.type_copie}}</div>
+  
+      <label for="name">Numero de contact :</label>
+      <div>{{document.num_contact}}</div>
+  
+      <label for="name">Commentaire :</label>
+      <div> {{document.commentaire}}</div>
+  
+      <label for="name">Type de compte :</label>
+      <div>{{document.id_type}}  {{document.nom_type}}</div>
+  
+      <label for="name">Service :</label>
+      <div>{{document.id_serv}} {{document.nom_service}} </div>
+
+      <label for="name">Organisme :</label>
+      <div>{{document.id_admin}} {{document.nom_admin}} </div>
+
+
+      <label for="name">ANNÉE de GESTION :</label>
+      <div>{{document.Annee_gestion}} </div>
+  
+      
+      
+  
+  
+    </fieldset>
+  </form>
+  
+  
+  
+  
+  
+  
+    

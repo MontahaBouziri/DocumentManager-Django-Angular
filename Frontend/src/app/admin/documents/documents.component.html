@@ -1,0 +1,198 @@
+<div>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="text"> <strong>Recherche</strong></label>&nbsp;
+<!---->
+<input id="recherche" type="text" name="search" [(ngModel)]="searchText" placeholder="">
+</div>
+<form [formGroup]="formExample" (ngSubmit)="postDoc()">
+    <div class="new ">
+        
+    
+        
+    </div>
+    
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver1">
+    
+                    
+    
+    
+    
+                        <div class="table100-nextcols">
+                            <table>
+                                <thead>
+                                    <tr class="row100 head">
+
+                                        <th class="cell100 column">Actions <br> ...
+                                        <th class="cell100 column">
+                                            Identifiant dossier <br>
+                                            ...
+                                        </th>
+
+
+                                        <th class="cell100 column">Type de compte<br> 
+                                            
+                                            <select  name="comptes" id="compte-select" formControlName="id_type">
+                                                <option value="{{IdCompteCourant}}">{{comptecourant}}</option>
+                                                <option *ngFor="let type of typesArr"  value="{{ type.id }}"> {{ type.Nom_type }} </option>
+                                                
+                                            </select> 
+                                        </th>
+
+
+                                        <th class="cell100 column">Service<br> 
+                                            
+                                            <select  name="service" id="compte-select" formControlName="id_serv">
+                                                
+                                                <option *ngFor="let serv of serv_arr"  value="{{ serv.id }}"> {{ serv.nom_service }} </option>
+                                                
+                                            </select> 
+                                        </th>
+
+
+                                        <th class="cell100 column">Administration<br> 
+                                            
+                                            <select  name="administration" id="compte-select" formControlName="id_admin">
+                                                
+                                                <option *ngFor="let admin of admin_arr"  value="{{ admin.id }}" > {{ admin.nom_admin }} </option>
+                                                
+                                            </select> 
+                                        </th>
+
+
+                                        <th class="cell100 column">Référance <br> <input type="text"  id="" formControlName="ref" > 
+                                            <div *ngIf="
+                                            formExample.controls['ref'].errors?.['pattern'] && 
+                                            formExample.controls['ref'].invalid " class="text-danger">
+                                            référance est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['ref'].errors?.['required'] && 
+                                            formExample.controls['ref'].touched 
+                                           " class="text-danger">
+                                           référance est obligatoire*</div>
+                                        </th>
+
+                                        <th class="cell100 column">Etat d'archive <br> <input type="text" formControlName="Etat_archive" >
+                                            <div *ngIf="
+                                            formExample.controls['Etat_archive'].errors?.['pattern'] && 
+                                            formExample.controls['Etat_archive'].invalid " class="text-danger">
+                                            Etat d'archive est invalide* </div>
+    
+                                        <div *ngIf="formExample.controls['Etat_archive'].errors?.['required'] && 
+                                            formExample.controls['Etat_archive'].touched 
+                                           " class="text-danger">
+                                           Etat d'archive est obligatoire*</div>
+                                        </th>
+
+                                        <th class="cell100 column">nombre de boites <br> <input type="text"  id="" formControlName="nbr_boites" >
+                                            <div *ngIf="
+                                            formExample.controls['nbr_boites'].errors?.['pattern'] && 
+                                            formExample.controls['nbr_boites'].invalid " class="text-danger">
+                                            nombre de boites est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['nbr_boites'].errors?.['required'] && 
+                                            formExample.controls['nbr_boites'].touched 
+                                           " class="text-danger">
+                                           nombre de boites est obligatoire*</div>
+                                         </th>
+
+                                        <th class="cell100 column">Type de copie <br> <input type="text"  id="" formControlName="type_copie" > 
+                                            <div *ngIf="
+                                            formExample.controls['type_copie'].errors?.['pattern'] && 
+                                            formExample.controls['type_copie'].invalid " class="text-danger">
+                                            type de copie est invalide* </div>
+    
+                                        <div *ngIf="formExample.controls['type_copie'].errors?.['required'] && 
+                                            formExample.controls['type_copie'].touched 
+                                           " class="text-danger">
+                                           typede copie est obligatoire*</div>
+                                        </th>
+
+                                        <th class="cell100 column">Numero de contacte <br> <input type="text"  id="" formControlName="num_contact" >
+                                            <div *ngIf="
+                                            formExample.controls['num_contact'].errors?.['pattern'] && 
+                                            formExample.controls['num_contact'].invalid " class="text-danger">
+                                            numero de contact est invalide* </div>
+          
+                                           <div *ngIf="formExample.controls['num_contact'].errors?.['required'] && 
+                                            formExample.controls['num_contact'].touched 
+                                           " class="text-danger">
+                                           numero de contact est obligatoire*</div>
+                                            
+                                         </th>
+
+                                        <th class="cell100 column">Commentaire <br> <input type="text"  id=""   formControlName="commentaire"> </th>
+<!--
+                                        <th class="cell100 column">Date_depot <br> <input type="text"  id=""  > </th>
+-->
+
+
+
+
+
+
+
+
+                                        <th class="cell100 column">Année_gestion <br> ... </th>
+                                    
+                                        <th  class="cell100 column"> <button  type="submit" (click)="save()" name="submit" class="submit action-button2" value="Submit" >Ajouter</button> </th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+    
+                                <tbody>   
+    
+                                    <tr class="row100 body" *ngFor="let doc of filterDocList(docArr) | filter:searchText " >
+                                        <td class="cell100 column"   >
+                                            <button type="reset" class="submit action-button" (click)="deleteDocument(doc.id)" id="danger">supprimer</button> 
+                                            <button class="submit action-button" (click)="onSelect(doc)" id="green">modifier</button>   </td> 
+
+                                        <td class="cell100 column"  > {{doc.id}} <br>      </td>
+                                        <td class="cell100 column"  (click)="docClicked(doc)"> {{doc.nom_type}} <br>      </td>
+                                        <td class="cell100 column"> {{doc.nom_service}} <br>   </td>
+                                        <td class="cell100 column"> {{doc.nom_admin}} <br>   </td>
+<!--  {{ doc.id_admin }} {{ doc.id_serv }}  {{ doc.id_type }}-->
+
+
+                                        <td class="cell100 column"  (click)="onSelect(doc)" >{{ doc.ref }} <br>         </td> 
+                                        <td class="cell100 column"> {{ doc.Etat_archive }} <br>  </td>
+                                        <td class="cell100 column">{{ doc.nbr_boites }} <br>   </td>
+                                        <td class="cell100 column"> {{ doc.type_copie }} <br>  </td>
+                                        <td class="cell100 column"> {{ doc.num_contact }} <br>   </td>
+                                        <td class="cell100 column">{{ doc.commentaire }} <br>   </td>
+<!--
+                                        <td class="cell100 column">{{ doc.Date_depot }} <br>   </td>
+                                        -->
+                                        <td class="cell100 column">{{ doc.Annee_gestion }} <br>   </td>
+
+                                        <td class="cell100 column">   </td>
+
+                                       
+                                       
+                                    </tr>
+                        
+                                        
+                                        
+                                       
+                                  
+    
+                                </tbody>
+                            </table>
+                        </div>
+    
+    
+                   
+    
+    
+    
+                    
+    
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>

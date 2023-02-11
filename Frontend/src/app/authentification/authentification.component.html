@@ -1,0 +1,27 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <i class="fa fa-user-circle fa-x"></i>
+    </div>
+
+    <!-- Login Form       [FormGroup]="loginForm"-->
+    <form >
+      <input type="text" class="fadeIn second" [(ngModel)]="input.username" name="username"  placeholder="username" required >
+      <input type="password" class="fadeIn second"  [(ngModel)]="input.password" name="password" placeholder="password" required>
+      
+      
+     <!-- <input  class="fadeIn fourth" value="Log In" (click)="login()"> -->  
+       
+    
+
+    <!-- Remind Passowrd [disabled]="!"-->
+    <div id="formFooter">
+      <button  type="submit" class="action-button" value="" (click)="loginUser()">Log In</button>
+    </div>
+  </form>
+  </div>
+</div>

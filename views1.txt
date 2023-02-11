@@ -1,0 +1,231 @@
+class TypeDocumentViewset(viewsets.ModelViewSet): 
+    model = TypeDocument
+    serializer_class = TypeDocumentSerializer
+    permission_classes = (IsAuthenticated,)
+
+    @api_view(['GET'])
+    def getType(request,id=0):
+        if  request.method=='GET' :
+            types_doc = TypeDocument.objects.all()
+            types_doc_ser = TypeDocumentSerializer(types_doc, many=True)
+            return Response(types_doc_ser.data)
+
+    @api_view(['POST'])
+    def setType(request,id=0):
+        if (request.method=='POST') :
+            types_doc_data = JSONParser().parse(request)
+            types_doc_ser = TypeDocumentSerializer(data=types_doc_data)
+            if types_doc_ser.is_valid():
+                types_doc_ser.save()
+                return Response("added succesfully")
+            return Response("add failed")
+
+    @api_view(['PUT'])
+    def updateType(request,id=0):
+        if (request.method=='PUT') :
+            types_doc_data = JSONParser().parse(request)
+            types_doc = TypeDocument.objects.get(id = types_doc_data['Clé_type'])
+            types_doc_ser = TypeDocumentSerializer(types_doc,data=types_doc_data)
+            if types_doc_ser.is_valid():
+                types_doc_ser.save()
+                return Response("Updated succesfully")
+            return Response("Updated failed")
+
+    @api_view(['DELETE'])
+    def deleteType(request,id=0):
+        if (request.method=='DELETE') : 
+            types_doc = TypeDocument.objects.get(Clé_type=id ) 
+            types_doc.delete()
+            return Response("Deleted successfully")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+App url
+
+
+
+from webbrowser import get
+from django import views
+from django.urls import path
+from .views import TypeDocumentViewSet
+from . import views
+
+
+urlpatterns = [
+    path('typedocuments/', views.TypeDocumentViewSet )
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+project url 
+
+
+from django.contrib import admin
+from django.urls import path
+from django.conf.urls import include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('Cdc_Documents.urls'))
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Models
+
+
+
+
+"""Nom_type="",nbre_pièces="""
+""" Cdc_Documents      réf="", Etat_archive="" ,nbr_boites="",type_copie="",num_contact="",Date_contact="",Date_depot="",Date_envoie="",Date_gestion="",Date_retour="",Année_gestion="",commentaire=""          """
+
+
+
+
+"""
+class Document(models.Model):
+    réf = models.CharField(max_length=10)
+    Etat_archive =  models.TextField(max_length=10)
+    nbr_boites= models.IntegerField()
+    type_copie = models.CharField(max_length=10)
+    num_contact = models.IntegerField()
+
+    Date_contact = models.DateField(default=date.today)
+    Date_depot = models.DateTimeField(auto_now_add=True)
+    Date_envoie = models.DateField(default=date.today)
+    Date_gestion = models.DateField(default=date.today)
+    Date_retour = models.DateField(default=date.today)
+    Année_gestion = models.DateField(default=date.today)
+
+    commentaire = models.TextField(max_length=10)
+    id_type = models.ForeignKey(TypeDocument,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.réf
+
+    """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Angular crud
+
+typedocument: any;
+    constructor(private typedoc:TypeDocService, private router: Router , private route: ActivatedRoute) {
+      this.getTypeDocument();
+    }
+
+    getTypeDocument = () => {
+      this.typedoc.getAllTypeDocs().subscribe(
+        (        data: any) => {
+          this.typedocument = data;
+        },
+
+        (        error: any) =>{ 
+          console.error();
+        }
+        
+      )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+getTypeDocument = () => {
+      this.typedoc.getAllTypeDocs().subscribe(
+        (        data: any) => {
+          this.typedocument = data;
+        },
+
+        (        error: any) =>{ 
+          console.error();
+        }
+        
+      )
+    }
+    }

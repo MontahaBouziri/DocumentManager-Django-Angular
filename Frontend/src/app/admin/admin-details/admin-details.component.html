@@ -1,0 +1,85 @@
+<!-- multistep form -->
+<form id="msform"  action="" [formGroup]="formExample" (ngSubmit)="updateOneAdministration()" >
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Détails des organismes</li>
+    </ul>
+    <!-- fieldsets -->
+  
+    <fieldset class="fieldset1">
+      <h2 class="fs-title">Détails des organismes</h2>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant de l'organisme : </label>
+      <input type="text" name="" id=""  value="{{Administration.id}}" >
+  
+      <label for="name">Nom de l'organisme  :</label>
+      <input type="text" name="" id=""  formControlName="nom_admin" value="{{Administration.nom_admin}}"  >
+      <div *ngIf="
+                                  formExample.controls['nom_admin'].errors?.['pattern'] && 
+                                  formExample.controls['nom_admin'].invalid " class="text-danger">
+                                  nom oganisme est invalide* </div>
+
+                                 <div *ngIf="formExample.controls['nom_admin'].errors?.['required'] && 
+                                  formExample.controls['nom_admin'].touched 
+                                 " class="text-danger">
+                                 nom oganisme est obligatoire*</div>
+
+  
+      <label for="name">Type de l'organisme  :</label>
+      <input type="text" name="" id="" formControlName="type_admin" value="{{Administration.type_admin}}">
+      <div *ngIf="
+                                  formExample.controls['type_admin'].errors?.['pattern'] && 
+                                  formExample.controls['type_admin'].invalid " class="text-danger">
+                                  type oganisme est invalide* </div>
+
+                                 <div *ngIf="formExample.controls['type_admin'].errors?.['required'] && 
+                                  formExample.controls['type_admin'].touched 
+                                 " class="text-danger">
+                                 type oganisme est obligatoire*</div>
+  
+     
+  
+    
+  
+      <button type="submit" name="submit" class="submit action-button" value="Submit" >Save</button>
+  
+  
+    </fieldset>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <fieldset class="fieldset2">
+      <h2 class="fs-title">Détails des organismes</h2>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant de l'organisme : </label>
+      <div> {{Administration.id}} </div>
+  
+      <label for="name">Nom de l'organisme :</label>
+      <div> {{Administration.nom_admin}}  </div>
+  
+      <label for="name">Type de l'organisme </label>
+      <div> {{Administration.type_admin}} </div>
+  
+  
+  
+      
+  
+    </fieldset>
+  </form>
+  
+  
+  
+  
+  
+  
+    

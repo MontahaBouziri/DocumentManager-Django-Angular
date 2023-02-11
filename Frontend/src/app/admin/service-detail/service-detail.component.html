@@ -1,0 +1,123 @@
+<!-- multistep form -->
+<form id="msform"  action="" [formGroup]="formExample" (ngSubmit)="updateOneService()" >
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Service Details</li>
+    </ul>
+    <!-- fieldsets -->
+  
+    <fieldset class="fieldset1">
+      <h2 class="fs-title">Service Details 1</h2>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant Service : </label>
+      <input type="text" name="" id="" value="{{service.id}}" >
+  
+      <label for="name">Nom de service :</label>
+      <input type="text" name="" id="" value="{{service.nom_service}}" formControlName="nom_service">
+      <div *ngIf="
+                                        formExample.controls['nom_service'].errors?.['pattern'] && 
+                                        formExample.controls['nom_service'].invalid " class="text-danger">
+                                        nom_service est invalide* </div>
+
+                                    <div *ngIf="formExample.controls['nom_service'].errors?.['required'] && 
+                                        formExample.controls['nom_service'].touched 
+                                       " class="text-danger">
+                                       Nom service est obligatoire*</div>
+
+
+
+  
+      <label for="name">Numero de service :</label>
+      <input type="text" name="" id="" value="{{service.num_serv}}" formControlName="num_serv">
+      <div *ngIf="
+                                    formExample.controls['num_serv'].errors?.['pattern'] && 
+                                    formExample.controls['num_serv'].invalid " class="text-danger">
+                                    numero de service est invalide*
+                                    </div>
+                                    <div *ngIf="formExample.controls['num_serv'].errors?.['required'] && 
+                                    formExample.controls['num_serv'].touched 
+                                    " class="text-danger">
+                                    numero de service est obligatoire*
+                                    </div>
+
+
+
+  
+      <label for="name">nombre d'employers:</label>
+      <input type="text" name="" id="" value="{{service.nbre_emp}}" formControlName="nbre_emp">
+      <div *ngIf="
+                                    formExample.controls['nbre_emp'].errors?.['pattern'] && 
+                                    formExample.controls['nbre_emp'].invalid " class="text-danger">
+                                    nombre d'employers est invalide*
+                                    </div>
+                                    <div *ngIf="formExample.controls['nbre_emp'].errors?.['required'] && 
+                                    formExample.controls['nbre_emp'].touched 
+                                    " class="text-danger">
+                                    nombre d'employers est obligatoire*
+                                    </div>
+
+
+  
+      <label for="name">type de service: </label>
+      <input type="text" name="" id="" value="{{service.type}}" formControlName="type">
+      <div *ngIf="
+      formExample.controls['type'].errors?.['pattern'] && 
+      formExample.controls['type'].invalid " class="text-danger">
+      type est invalide* </div>
+
+  <div *ngIf="formExample.controls['type'].errors?.['required'] && 
+      formExample.controls['type'].touched 
+     " class="text-danger">
+     type est obligatoire*</div>
+      
+  
+    
+  
+      <button type="submit" name="submit" class="submit action-button" value="Submit" >Save</button>
+  
+  
+    </fieldset>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <fieldset class="fieldset2">
+      <h2 class="fs-title">Service Details 2</h2>
+      <!-- <h3 class="fs-subtitle">We will never sell it</h3> -->
+  
+      <label for="name">Identifiant Service: </label>
+      <div> {{service.id}} </div>
+  
+      <label for="name">Nom de service:</label>
+      <div> {{service.nom_service}}  </div>
+  
+      <label for="name">Numero de service:</label>
+      <div> {{service.num_serv}} </div>
+  
+      <label for="name">Nombre d'employers: </label>
+      <div> {{service.nbre_emp}}  </div>
+  
+      <label for="name">Type de service: </label>
+      <div> {{service.type}} </div>
+  
+  
+  
+      
+  
+    </fieldset>
+  </form>
+  
+  
+  
+  
+  
+  
+    
